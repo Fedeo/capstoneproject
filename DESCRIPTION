@@ -1,0 +1,29 @@
+Package: capstoneproject
+Type: Package
+Title: Package uses the U.S. National Oceanographic and Atmospheric Administration (NOAA) data to provide
+        useful functions and methods on earthquakes all over the world
+Version: 1.0.0
+Author: Federico Sensi <federico.sensi@gmail.com>
+Maintainer: Federico Sensi <federico.sensi@gmail.com>
+Description: Package uses the U.S. National Oceanographic and Atmospheric Administration (NOAA) data to provide
+    useful functions and methods on earthquakes all over the world.
+    To simplify the usage of NOAA data the package provides a set of visualization functions that allow user to immediately
+    catch the main information on eartquakes based on their magnitude, intensity and geographical location.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Import:
+  magrittr,
+  dplyr,
+  ggplot2,
+  grid,
+  leaflet,
+  lubridate,
+  purrr,
+  stringr
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

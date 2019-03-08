@@ -1,0 +1,153 @@
+---
+title: "Description of Capstone Package"
+author: "Federico Sensi"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The earthquaketools R package provides a range of functions that operate on (clean), and visualize,
+earthquake data from the U.S. National Oceanographic and Atmospheric Administration (NOAA) database: 
+https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1
+
+This vignette provides an overview of each of the functions provided, with examples.
+
+## eq_clean_data() Function
+
+ This function takes the raw data frame of NOAA earthquake data and cleans it.
+ Data (tab delimited) is available for download at:
+ \href{https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1}{Significant
+ EarthQuake Database}
+ The clean data frame have the following:
+ 1. A date column created by uniting the year, month, day and converting it to
+    the Date class
+ 2. LATITUDE and LONGITUDE columns converted to numeric class
+
+```{r}
+library(capstoneproject)
+# Read the raw data from package
+data(earthquakes)
+# Clean it up for use by the visualization functions
+quakes_clean <- eq_clean_data(earthquakes)
+```
+
+## eq_clean_location() Function
+This function cleans the LOCATION_NAME observation in a NOAA significant Earthquakes data set.
+
+```{r}
+library(capstoneproject)
+# Read the raw data from package
+data(earthquakes)
+# Clean LOCATION_NAME for use by the visualization functions
+quakes_loc_clean <- eq_clean_location(earthquakes)
+```
+
+
+## Functions to Visualize the Earthquake Data
+
+Four functions have been created that help visualize the data:
+
+Function Name | Description
+--------------|------------
+geom_timeline() | Adds an earthquake timeline plot to a ggplot2/grid graphics object
+geom_timeline_label() | Label Largest Earthquakes on Timeline created by geom_timeline()
+eq_map() | Creates an interactive leaflet map showing the location of earthquakes in the given quakes data set.
+eq_create_label() | Creates a more descriptive and HTML-formatted popup label to be used in eq_map function
+
+## geom_timeline() Function
+
+geom_timeline shows a timeline of NOAA Significant earthquakes, plotting individual 
+countries along the y-axis and dates along the x-axis. The size of the points is relative to 
+the earthquakes magnitude, and the color is related to the total number of deaths.
+
+```{r, eval = TRUE, fig.width=7}
+library(capstoneproject)
+library(dplyr)
+library(ggplot2)
+
+data(earthquakes)
+quakes_clean <- eq_clean_data(earthquakes)
+
+ quakes_clean %>%
+    filter(COUNTRY %in% c('ITALY', 'GREECE') & DATE > '1990-01-01' & !is.na(EQ_PRIMARY)) %>%
+    ggplot() +
+    geom_timeline(aes(x = DATE, y = COUNTRY, color = TOTAL_DEATHS,
+                      size = EQ_PRIMARY)) +
+    scale_size_continuous(name = 'Richter scale value') +
+    scale_color_continuous(name = 'Nbr of Deaths')
+```
+
+## geom_timeline_label() Function
+
+Function geom_timeline shows a timeline of NOAA Significant earthquakes,
+plotting individual countries along the y-axis and dates along the x-axis.
+The size of the points is relatative to the earthquakes magnitude, and
+the color is related to the total number of deaths.
+
+```{r, eval = TRUE, fig.width=7}
+library(capstoneproject)
+library(dplyr)
+library(ggplot2)
+library(grid)
+ 
+ data(earthquakes)
+ quakes_clean <- eq_clean_data(earthquakes)
+
+  quakes_clean %>%
+     dplyr::filter(COUNTRY %in% c('ITALY', 'GREECE') & DATE > '2000-01-01' & !is.na(EQ_PRIMARY)) %>%
+     ggplot() +
+     geom_timeline(aes(x = DATE, y = COUNTRY, color = TOTAL_DEATHS,
+                       size = EQ_PRIMARY)) +
+     geom_timeline_label(aes(x = DATE, y = COUNTRY, magnitude = EQ_PRIMARY,
+                       label = LOCATION_NAME, n_max = 3)) +
+     scale_size_continuous(name = 'Richter scale value') +
+     scale_color_continuous(name = 'Nbr of Deaths')
+```
+
+
+## eq_map() Function
+
+This function shows an interactive map of the location of the earthquakes in the given quakes data.  
+The size of the circles are proportional to the magnitude of the earthquakes (in the EQ_PRIMARY) variable. 
+The map is interactive, and when you click on a link, the popup shows the annotation as specified by the \code{annot_col} variable.
+
+
+
+```{r, eval = TRUE, fig.width=7}
+library(capstoneproject)
+library(lubridate); 
+library(dplyr)
+
+data(earthquakes)
+quakes_clean <- eq_clean_data(earthquakes)
+quakes_it_gr  <-  quakes_clean %>%
+  dplyr::filter(COUNTRY %in% c('ITALY', 'GREECE') & DATE > '2000-01-01' & !is.na(EQ_PRIMARY))
+eq_map(quakes_it_gr, annot_col = 'DATE')
+```
+
+## eq_create_label() Function
+
+If the user desires to show more than just one piece of information about a selected earthquake, the eq_create_label() function may be used. Function eq_create_label creates a more descriptive and HTML-formatted popup label to be used in eq_map.
+
+```{r, eval = TRUE, fig.width=7}
+library(capstoneproject)
+library(lubridate); 
+library(dplyr)
+
+data(earthquakes)
+quakes_clean <- eq_clean_data(earthquakes)
+quakes_it_gr_popup  <-  quakes_clean %>%
+  dplyr::filter(COUNTRY %in% c('ITALY', 'GREECE') & DATE > '2000-01-01' & !is.na(EQ_PRIMARY)) %>%
+  dplyr::mutate(popup_text = eq_create_label(.))
+eq_map(quakes_it_gr_popup, annot_col = 'popup_text')
+```
