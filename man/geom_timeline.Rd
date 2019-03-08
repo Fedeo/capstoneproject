@@ -42,6 +42,7 @@ the color is related to the total number of deaths.
 }
 \examples{
 
+library(magrittr)
 data(earthquakes)
 quakes_clean <- eq_clean_data(earthquakes)
 

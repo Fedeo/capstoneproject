@@ -51,6 +51,7 @@ aesthetics are in bold):
 }
 
 \examples{
+library(magrittr)
 data(earthquakes)
 quakes_clean <- eq_clean_data(earthquakes)
 
