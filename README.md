@@ -25,4 +25,7 @@ The package can be loaded as any other R packahe with:
 ```
 library(capstoneproject)
 ```
-https://travis-ci.org/Fedeo/capstoneproject.svg?branch=capstoneproject
+
+## Build status
+[![Build Status](https://travis-ci.org/Fedeo/capstoneproject.svg?branch=capstoneproject)](https://travis-ci.org/Fedeo/capstoneproject)
+
