@@ -34,6 +34,8 @@
 #' @examples
 #'
 #' library(magrittr)
+#' library(grid)
+#'
 #' data(earthquakes)
 #' quakes_clean <- eq_clean_data(earthquakes)
 #'
