@@ -2,7 +2,7 @@
 % Please edit documentation in R/geom_timeline.R
 \name{geom_timeline}
 \alias{geom_timeline}
-\title{geom_timeline - adds an earthquake timeline plot to a ggplot2/grid graphics object}
+\title{geom_timeline - adds an earthquake timeline plot to a ggplot2/grid graphics objects}
 \usage{
 geom_timeline(mapping = NULL, data = NULL, stat = "identity",
   position = "identity", na.rm = FALSE, show.legend = NA,
