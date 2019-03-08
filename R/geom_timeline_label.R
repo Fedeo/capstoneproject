@@ -31,6 +31,7 @@
 #'  \item alpha
 #' }
 #'
+#' @import  magrittr
 #' @importFrom ggplot2 layer
 #'
 #' @export
@@ -74,6 +75,7 @@ geom_timeline_label <-
 #'
 #' See \code{\link{geom_timeline_label}} for description.
 #'
+#' @import  magrittr
 #' @importFrom ggplot2 ggproto Geom aes draw_key_point GeomSegment GeomText
 #' @importFrom dplyr mutate group_by top_n
 #' @importFrom grid grobTree

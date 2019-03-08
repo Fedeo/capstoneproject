@@ -21,6 +21,7 @@
 #'
 #' @author Federico Sensi
 #'
+#' @import  magrittr
 #' @importFrom  dplyr mutate
 #' @importFrom purrr pmap
 #' @importFrom lubridate ymd years
@@ -91,6 +92,7 @@ eq_clean_data <- function(data) {
 #'
 #' @author Federico Sensi
 #'
+#' @import  magrittr
 #' @importFrom dplyr mutate
 #' @importFrom purrr map2_chr
 #' @importFrom stringr str_trim str_to_title

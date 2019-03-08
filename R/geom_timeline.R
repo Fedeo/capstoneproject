@@ -26,6 +26,7 @@
 #'
 #' @author Federico Sensi
 #'
+#' @import  magrittr
 #' @importFrom ggplot2 layer
 #' @export
 #'
@@ -68,6 +69,7 @@ geom_timeline <- function(mapping = NULL,
 #'
 #' See \code{\link{geom_timeline}} for description.
 #'
+#' @import  magrittr
 #' @importFrom ggplot2 draw_key_point ggproto aes Geom
 #' @importFrom grid pointsGrob gpar
 #'
