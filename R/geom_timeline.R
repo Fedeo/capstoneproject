@@ -1,4 +1,4 @@
-#' geom_timeline - adds an earthquake timeline plot to a ggplot2/grid graphics object
+#' geom_timeline - adds an earthquake timeline plot to a ggplot2/grid graphics objects
 #'
 #' \code{geom_timeline} shows a timeline of NOAA Significant earthquakes,
 #' plotting individual countries along the y-axis and dates along the x-axis.
