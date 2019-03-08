@@ -32,6 +32,7 @@ data set:
 Any of the above variables with missing/NA values are skipped in the label.
 }
 \examples{
+library(magrittr)
 data(earthquakes)
 quakes_clean <- eq_clean_data(earthquakes)
 

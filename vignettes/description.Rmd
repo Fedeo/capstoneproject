@@ -125,7 +125,6 @@ The map is interactive, and when you click on a link, the popup shows the annota
 
 ```{r, eval = TRUE, fig.width=7}
 library(capstoneproject)
-library(lubridate); 
 library(dplyr)
 
 data(earthquakes)
@@ -141,7 +140,6 @@ If the user desires to show more than just one piece of information about a sele
 
 ```{r, eval = TRUE, fig.width=7}
 library(capstoneproject)
-library(lubridate); 
 library(dplyr)
 
 data(earthquakes)

@@ -84,6 +84,7 @@ eq_map <- function(data, annot_col = 'DATE') {
 #' @export
 #'
 #' @examples
+#' library(magrittr)
 #' data(earthquakes)
 #' quakes_clean <- eq_clean_data(earthquakes)
 #'
