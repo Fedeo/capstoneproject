@@ -77,12 +77,16 @@ eq_map <- function(data, annot_col = 'DATE') {
 #' @return A vector with the HTML-formatted labels. You should include this
 #' vector with the data frame that is sent to \code{\link{eq_map}}.
 #'
+#'
 #' @importFrom dplyr mutate
 #' @importFrom purrr pmap_chr
 #'
 #' @export
 #'
 #' @examples
+#' data(earthquakes)
+#' quakes_clean <- eq_clean_data(earthquakes)
+#'
 #' quakes_it_gr_popup  <-  quakes_clean %>%
 #'   dplyr::filter(COUNTRY %in% c('ITALY', 'GREECE') & DATE > '2000-01-01' & !is.na(EQ_PRIMARY)) %>%
 #'   dplyr::mutate(popup_text = eq_create_label(.))
