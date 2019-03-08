@@ -32,6 +32,9 @@ data set:
 Any of the above variables with missing/NA values are skipped in the label.
 }
 \examples{
+data(earthquakes)
+quakes_clean <- eq_clean_data(earthquakes)
+
 quakes_it_gr_popup  <-  quakes_clean \%>\%
   dplyr::filter(COUNTRY \%in\% c('ITALY', 'GREECE') & DATE > '2000-01-01' & !is.na(EQ_PRIMARY)) \%>\%
   dplyr::mutate(popup_text = eq_create_label(.))

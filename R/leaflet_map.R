@@ -77,7 +77,7 @@ eq_map <- function(data, annot_col = 'DATE') {
 #' @return A vector with the HTML-formatted labels. You should include this
 #' vector with the data frame that is sent to \code{\link{eq_map}}.
 #'
-#'
+#' @import  magrittr
 #' @importFrom dplyr mutate
 #' @importFrom purrr pmap_chr
 #'
