@@ -22,7 +22,7 @@
 #' @author Federico Sensi
 #'
 #' @importFrom  dplyr mutate
-#' @importFrom purrr map
+#' @importFrom purrr pmap
 #' @importFrom lubridate ymd years
 #'
 #' @export
