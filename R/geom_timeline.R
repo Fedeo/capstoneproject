@@ -33,9 +33,9 @@
 #'
 #' @examples
 #'
-#' library(magrittr)
-#' library(ggplot2)
-#' library(grid)
+#'  library(magrittr)
+#'  library(ggplot2)
+#'  library(grid)
 #'
 #' data(earthquakes)
 #' quakes_clean <- eq_clean_data(earthquakes)

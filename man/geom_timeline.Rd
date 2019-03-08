@@ -42,7 +42,10 @@ the color is related to the total number of deaths.
 }
 \examples{
 
-library(magrittr)
+ library(magrittr)
+ library(ggplot2)
+ library(grid)
+
 data(earthquakes)
 quakes_clean <- eq_clean_data(earthquakes)
 
